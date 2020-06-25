@@ -72,6 +72,7 @@
 
 
 <!-- <p id="demo"></p> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script>
 var xmlhttp = new XMLHttpRequest(), x ;
 xmlhttp.onreadystatechange = function() {
@@ -83,7 +84,8 @@ xmlhttp.onreadystatechange = function() {
     for (i in myObj.feeds)
     {  
       //  j = toint(i)+ 1
-        x += "<tr> <td>"+i+ "</td> <td>"+ myObj.feeds[i].created_at+ "</td>";
+      var a=moment(myObj.feeds[i].created_at).utcOffset('+0530').format('YYYY-MM-DD HH:mm');
+        x += "<tr> <td>"+i+ "</td> <td>"+ a+ "</td>";
         x += "<td>" + myObj.feeds[i].field1 + "</td>";
         x += "<td>" + myObj.feeds[i].field2 + "</td>";
         x += "<td>" + myObj.feeds[i].field3 + "</td>";

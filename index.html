@@ -53,6 +53,8 @@
 			</div>
 			
 		</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 		<script>
 			var xmlhttp = new XMLHttpRequest(), x ;
 			xmlhttp.onreadystatechange = function() {
@@ -66,13 +68,13 @@
 				safety="";
 				for (i in myObj.feeds)
 				{  
-					var y= myObj.feeds[i].created_at.split(" ");
+					var a=moment(myObj.feeds[i].created_at).utcOffset('+0530').format('YYYY-MM-DD HH:mm');
 					leak=myObj.feeds[i].field3;
 					safety=myObj.feeds[i].field4;
 					gas=myObj.feeds[i].field2;
-					last_update = myObj.feeds[i].created_at;
+					last_update = a;
 
-					x += "<tr><td>"+ myObj.feeds[i].created_at+ "</td>";
+					x += "<tr><td>"+a+ "</td>";
 					x += "<td>" + myObj.feeds[i].field1 + "</td></tr>";
 			
 				}
