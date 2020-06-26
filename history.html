@@ -79,13 +79,15 @@ xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj = JSON.parse(this.responseText);
     myObj.feeds.reverse();
-    x +="<tr> <th>S.No</th><th>Time</th> <th>"+myObj.channel.field1+"</th> <th>Gas</th>  <th>Flame</th><th>Safety</th></tr> ";
+    x +="<tr> <th>S.No</th><th>Date</th> <th>Time</th> <th>"+myObj.channel.field1+"</th> <th>Gas</th>  <th>Flame</th><th>Safety</th></tr> ";
    
     for (i in myObj.feeds)
     {  
       //  j = toint(i)+ 1
-      var a=moment(myObj.feeds[i].created_at).utcOffset('+0530').format('YYYY-MM-DD HH:mm');
+      var a=moment(myObj.feeds[i].created_at).utcOffset('+0530').format('DD-MM-YYY');
+      var b=moment(myObj.feeds[i].created_at).utcOffset('+0530').format('HH:mm');
         x += "<tr> <td>"+i+ "</td> <td>"+ a+ "</td>";
+        x += "<td>"+ b+ "</td>";
         x += "<td>" + myObj.feeds[i].field1 + "</td>";
         x += "<td>" + myObj.feeds[i].field2 + "</td>";
         x += "<td>" + myObj.feeds[i].field3 + "</td>";
